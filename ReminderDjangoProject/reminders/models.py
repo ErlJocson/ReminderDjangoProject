@@ -6,3 +6,4 @@ class Reminders(models.Model):
     content = models.TextField()
     date = models.DateField()
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    
