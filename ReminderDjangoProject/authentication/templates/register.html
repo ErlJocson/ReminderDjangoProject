@@ -1,1 +1,13 @@
-{% extends 'base.html' %} {% block content %} {% endblock %}
+{% extends 'base.html' %} {% block content %}
+
+<div class="form-container">
+  <form method="post" class="shadow-lg">
+    {% csrf_token %}
+    <div>
+      <label for=""></label>
+      <input type="text" />
+    </div>
+  </form>
+</div>
+
+{% endblock %}

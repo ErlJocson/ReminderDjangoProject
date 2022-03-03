@@ -11,7 +11,14 @@ def index_view(request):
 def add_reminder_view(request):
     form = ReminderForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        # Reminders.objects.create(
+        #     title=form.cleaned_data["title"],
+        #     content=form.cleaned_data["content"],
+        #     date=form.cleaned_data['date'],
+        #     user_id=request.user.id
+        # )
+        form = ReminderForm
+
     return render(request, 'add_reminder.html', {
         "form":form
     })
