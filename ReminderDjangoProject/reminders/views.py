@@ -1,13 +1,16 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .forms import ReminderForm
 from .models import Reminders
 
+@login_required
 def index_view(request):
     reminders = Reminders.objects.all()
     return render(request, 'index.html', {
         "reminders":reminders
     })
 
+@login_required
 def add_reminder_view(request):
     form = ReminderForm(request.POST or None)
     if form.is_valid():
