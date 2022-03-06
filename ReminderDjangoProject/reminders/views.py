@@ -8,7 +8,8 @@ from .models import Reminders
 def index_view(request):
     reminders = Reminders.objects.all()
     return render(request, 'index.html', {
-        "reminders":reminders
+        "reminders":reminders,
+        "title":"Home"
     })
 
 @login_required
@@ -24,7 +25,8 @@ def add_reminder_view(request):
         messages.success(request, 'Reminder added.')
         return redirect('index')
     return render(request, 'add_reminder.html', {
-        "form":form
+        "form":form,
+        "title":"Add reminders"
     })
 
 @login_required

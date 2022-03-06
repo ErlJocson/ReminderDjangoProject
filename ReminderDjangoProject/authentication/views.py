@@ -13,7 +13,9 @@ def login_view(request):
             return redirect('index')
         else:
             messages.success(request, "There was an error!")
-    return render(request, 'login.html', {})
+    return render(request, 'login.html', {
+        "title":"Login"
+    })
 
 def register_view(request):
     if request.method == "POST":
@@ -23,19 +25,22 @@ def register_view(request):
         email = request.POST["email"]
         password = request.POST["password"]
         confirm_password = request.POST["confirm_password"]
-        if password != confirm_password:
-            return render(request, 'register.html', {})
+        
+        if password == confirm_password:
+            user = User.objects.create_user(
+                username = username,
+                first_name = first_name,
+                last_name = last_name,
+                email = email,
+                password = password,
+            )
+            user.save()
+            login(request, authenticate(request, username=username, password=password))
+            return redirect('index')
 
-        user = User.objects.create_user(
-            username = username,
-            first_name = first_name,
-            last_name = last_name,
-            email = email,
-            password = password,
-        )
-        user.save()
-
-    return render(request, 'register.html', {})
+    return render(request, 'register.html', {
+        "title":"Register"
+    })
 
 def logout_user(request):
     logout(request)
