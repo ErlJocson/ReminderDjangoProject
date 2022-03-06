@@ -3,9 +3,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-c&zpyg@+qt(#fie_x%-jy!m0_)ja$_9(z!ce^l36e)f&c*xjh='
+SECRET_KEY = 'j2r293cunr98n1239ryjdio318239IOWUC@(*Y881uiuh*@$!(*RUN*SDBdnjd;>}"?}:!}:_}!:!Prpowkgfopdf'
 
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
