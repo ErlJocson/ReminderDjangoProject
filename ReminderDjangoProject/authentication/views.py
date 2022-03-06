@@ -25,7 +25,7 @@ def register_view(request):
         email = request.POST["email"]
         password = request.POST["password"]
         confirm_password = request.POST["confirm_password"]
-        
+
         if password == confirm_password:
             user = User.objects.create_user(
                 username = username,
@@ -36,7 +36,10 @@ def register_view(request):
             )
             user.save()
             login(request, authenticate(request, username=username, password=password))
+            messages.success(request, f'Welcome {username}!')
             return redirect('index')
+        else:
+            messages.warning(request, 'Password is not the same!')
 
     return render(request, 'register.html', {
         "title":"Register"
@@ -45,3 +48,8 @@ def register_view(request):
 def logout_user(request):
     logout(request)
     return redirect('index')
+
+def delete_account(request):
+    user_to_delete = User.objects.get(id=request.user.id)
+    user_to_delete.delete()
+    return redirect('login')
