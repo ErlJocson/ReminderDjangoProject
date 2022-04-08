@@ -8,6 +8,9 @@ from datetime import datetime
 @login_required
 def index_view(request):
     reminders = Reminders.objects.all()
+    for reminder in reminders:
+        if reminder.date < datetime.date(datetime.now()):
+            messages.warning(request, 'You missed a reminder!')
     return render(request, 'index.html', {
         "reminders":reminders,
         "title":"Home"
