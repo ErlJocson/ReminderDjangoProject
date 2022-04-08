@@ -7,7 +7,7 @@ SECRET_KEY = 'j2r293cunr98n1239ryjdio318239IOWUC@(*Y881uiuh*@$!(*RUN*SDBdnjd;>}"
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'reminder12.herokuapp.com']
+ALLOWED_HOSTS = ['reminder12.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
