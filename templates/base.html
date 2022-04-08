@@ -11,10 +11,78 @@
       crossorigin="anonymous"
     />
     {% load static %}
-    <link rel="stylesheet" href="{% static 'index.css' %}" />
-    <link rel="stylesheet" href="{% static 'form.css' %}" />
-    <link rel="stylesheet" href="{% static 'navigation.css' %}" />
     <title>Reminder app | {{ title }}</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      body {
+        line-height: 1.5;
+        background-color: rgb(201, 201, 201);
+      }
+
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important ;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      .form-container {
+        min-height: calc(100vh - 60px);
+        display: flex;
+        align-items: center;
+      }
+
+      form {
+        width: 50%;
+        margin: auto;
+        padding: 20px;
+        background-color: white;
+      }
+
+      nav {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .navbar div {
+        display: flex;
+      }
+
+      .navbar div a {
+        color: white;
+        font-size: 14px;
+      }
+
+      .navbar div a:hover {
+        color: black;
+      }
+    </style>
   </head>
   <body>
     {% if messages %} {% for message in messages %}
